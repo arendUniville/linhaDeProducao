@@ -41,5 +41,14 @@ namespace LinhaDeProducao.Entities
             return "Profit: " + profit.ToString("F2", CultureInfo.InvariantCulture);
 
         }
+
+        public override string ToString()
+        {
+            return "Id: " + Id + 
+                " | Name: " + Name + 
+                " | Amount " + Amount + 
+                " | Profit: " + Profit() + 
+                " | OutValue: R$" + OutValue + ".";
+        }
     }
 }

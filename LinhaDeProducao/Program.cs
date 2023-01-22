@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Security.Cryptography;
 using LinhaDeProducao.Entities;
+using System.Globalization;
 
 namespace LinhaDeProducao
 {
@@ -37,13 +38,15 @@ namespace LinhaDeProducao
                 Console.WriteLine("4. Excluir uma produção.");
                 Console.WriteLine("5. Mostrar faturamento.");
                 Console.WriteLine("6. Mostrar produção em andamento.");
-                Console.WriteLine("7. Sair do programa.");
+                Console.WriteLine("7. Mostrar produtos.");
+                Console.WriteLine("8. Mostrar funcionários.");
+                Console.WriteLine("9. Sair do programa.");
 
                 Console.WriteLine("\n-------------------------------------");
 
+
                 Console.Write("Escolha a opção desejada: ");
                 userMenuChoice = int.Parse(Console.ReadLine());
-
 
 
                 switch (userMenuChoice)
@@ -51,28 +54,50 @@ namespace LinhaDeProducao
 
                     case 1:
 
-                        productId += 1;
+                        Console.Write("How many products do you want to add? Quantity: ");
+                        int quantityProductsAdd = int.Parse(Console.ReadLine());
 
-                        Console.Write("Digite o nome do produto: ");
-                        productName = Console.ReadLine();
+                        for(int i = 0;i < quantityProductsAdd; i++)
+                        {
 
-                        Console.Write("Insira a quantidade em estoque: ");
-                        productAmount = int.Parse(Console.ReadLine());
+                            productId += 1;
 
-                        Console.Write("Insira o valor de custo: R$");
-                        entryValue = double.Parse(Console.ReadLine());
+                            Console.Write("Digite o nome do produto: ");
+                            productName = Console.ReadLine();
 
-                        Console.Write("Insira o valor de venda: R$");
-                        outValue = double.Parse(Console.ReadLine());
+                            Console.Write("Insira a quantidade em estoque: ");
+                            productAmount = int.Parse(Console.ReadLine());
 
-                        Console.Write("Digite o lote do produto: ");
-                        serialId = Console.ReadLine();
+                            Console.Write("Insira o valor de custo: R$");
+                            entryValue = double.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
 
-                        products.Add(new Product(productId, productName, productAmount, entryValue, outValue, "GBA001"));
+                            Console.Write("Insira o valor de venda: R$");
+                            outValue = double.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
+
+                            Console.Write("Digite o lote do produto: ");
+                            serialId = Console.ReadLine();
+
+                            products.Add(new Product(productId, productName, productAmount, entryValue, outValue, "GBA001"));
+
+                            Console.Write("\nProduto adicionado!\n");
 
 
 
-                        return;
+                        }
+
+                        Console.Write("Voltando a página inicial em ");
+
+                        for (int i = 1; i <= 3; i++)
+                        {
+
+                            Console.Write(i + ", ");
+                            Thread.Sleep(1000);
+
+                        }
+
+                        Console.Clear();
+
+                        break;
 
                     case 2:
                         return;
@@ -93,19 +118,58 @@ namespace LinhaDeProducao
 
                     case 7:
 
+                        Console.Clear();
+
+                        Console.WriteLine("Produtos cadastrados:\n");
+
+                        foreach(Product p in products)
+                        {
+
+                            Console.WriteLine(p.ToString());
+
+                        }
+
+                        Console.WriteLine("\nAperte enter para continuar. ");
+                        Console.ReadLine();
+
+                        Console.Clear();
+
+                        break;
+
+                    case 8:
+
+                        break;
+
+                    case 9:
+
+                        Console.Clear();
                         Console.WriteLine("O programa foi encerrado.");
-                        return ;
+                        return;
+
+                    default:
+
+                        Console.Clear();
+                        Console.WriteLine("Valor incorreto. Voltando ao início.");
+
+                        for (int i = 0; i < 3; i++)
+                        {
+
+                            Console.WriteLine(i + ", ");
+                            Thread.Sleep(1000);
+
+                        }
+
+                        Console.Clear();
+
+                        break;
+
 
                 }
-
-
-
-
 
             }
 
 
-
+            
 
 
 
