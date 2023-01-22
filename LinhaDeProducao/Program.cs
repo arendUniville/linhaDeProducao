@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Security.Cryptography;
 using LinhaDeProducao.Entities;
 
 namespace LinhaDeProducao
@@ -14,6 +15,13 @@ namespace LinhaDeProducao
 
             bool userWantContinue = true;
             int userMenuChoice;
+            
+            int productId = 0;
+            string productName;
+            int productAmount = 0;
+            double entryValue;
+            double outValue;
+            string serialId;
 
             List<Product> products = new List<Product>();
 
@@ -43,31 +51,24 @@ namespace LinhaDeProducao
 
                     case 1:
 
-                        string productName;
-
-                        // Gerando número aleatório.
-
-                            int baseDivide = 233366699;
-
-                            DateTime d1 = DateTime.Now;
-
-                            int d2 = DateTime.Now.Hour;
-                            int d3 = DateTime.Now.Minute;
-                            int d4 = DateTime.Now.Second;
-                            int d5 = DateTime.Now.Millisecond;
-
-                            //Console.WriteLine(d1);
-                            //Console.WriteLine(d1.Ticks);
-                            //Console.WriteLine(d2);
-
-                            int productId = (((int)d1.Ticks + d2) * d4) + d5;
-
+                        productId += 1;
 
                         Console.Write("Digite o nome do produto: ");
                         productName = Console.ReadLine();
 
+                        Console.Write("Insira a quantidade em estoque: ");
+                        productAmount = int.Parse(Console.ReadLine());
 
-                        products.Add(new Product(productId, productName, 5, 2.50, 5.53, "GBA001"));
+                        Console.Write("Insira o valor de custo: R$");
+                        entryValue = double.Parse(Console.ReadLine());
+
+                        Console.Write("Insira o valor de venda: R$");
+                        outValue = double.Parse(Console.ReadLine());
+
+                        Console.Write("Digite o lote do produto: ");
+                        serialId = Console.ReadLine();
+
+                        products.Add(new Product(productId, productName, productAmount, entryValue, outValue, "GBA001"));
 
 
 

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Globalization;
 
 namespace LinhaDeProducao.Entities
 {
@@ -28,6 +29,16 @@ namespace LinhaDeProducao.Entities
             EntryValue = entryValue;
             OutValue = outValue;
             SerialId = serialId;
+
+        }
+
+
+        public string Profit()
+        {
+
+            double profit = OutValue - EntryValue;
+
+            return "Profit: " + profit.ToString("F2", CultureInfo.InvariantCulture);
 
         }
     }
