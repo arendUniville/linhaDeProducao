@@ -271,20 +271,20 @@ namespace LinhaDeProducao
 
                                 productionId += 1;
 
-                                Console.WriteLine("Entry name production:");
+                                Console.Write("Entry name production: ");
                                 productionName = Console.ReadLine();
 
-                                Console.WriteLine("Entry id product: ");
+                                Console.Write("Entry id product: ");
                                 productionProductName = int.Parse(Console.ReadLine());
 
                                 productionInitDate = DateTime.Now;
 
-                                Console.WriteLine("Entry Previous Date: ");
+                                Console.Write("Entry Previous Date: ");
                                 productionPreviousDate = DateTime.Parse(Console.ReadLine());
 
                                 productionRealDate = productionPreviousDate;
 
-                                Console.WriteLine("Entry id employe responsible: ");
+                                Console.Write("Entry id employe responsible: ");
                                 productionEmployee = int.Parse(Console.ReadLine());
 
                                 foreach (Employee m in employees)
@@ -305,10 +305,10 @@ namespace LinhaDeProducao
 
                                 }
 
-                                Console.WriteLine("Cost: ");
+                                Console.Write("Cost: R$");
                                 productionCost = double.Parse(Console.ReadLine());
 
-                                Console.WriteLine("Value: ");
+                                Console.Write("Value: R$");
                                 productionValue = double.Parse(Console.ReadLine());
 
 
@@ -339,6 +339,23 @@ namespace LinhaDeProducao
                             break;
 
                         case 4:
+
+                            Console.WriteLine("Orders registered:\n");
+
+                            foreach (ProductionOrder prod in orders)
+                            {
+
+                                Console.WriteLine(prod.Id + " | Title: " + prod.Name + " | Product: " + prod.Product + " | Started At: " + prod.InitialDate + " | Value: R$" + prod.Value);
+                                Console.WriteLine("------------------------------------");
+
+                            }
+
+
+                            Console.Write("Entry order Id to remove an order: ");
+
+                            int orderIdToDelete = int.Parse(Console.ReadLine());
+
+                            orders.RemoveAt(orderIdToDelete);
 
                             Console.Write("\nClick enter to continue. ");
                             Console.ReadLine();
