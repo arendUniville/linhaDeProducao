@@ -13,7 +13,7 @@ namespace LinhaDeProducao.Entities
         public int Id { get; set; }
         public string FirstName { get; set; }
         public DateTime Born { get; set; }
-        public double Salary { get; set; }
+        public double Salary { get; protected set; }
         public EmployeePosition Position { get; set; }
 
 
@@ -31,7 +31,11 @@ namespace LinhaDeProducao.Entities
 
         public override string ToString()
         {
-            return "Id: " + Id + "\nName: " + FirstName + "\nBorn: " + Born.ToString("dd/MM/yyyy") + "\nSalary: R$" + Salary + "\nPosition:" + Position.ToString();
+            return "Id: " + Id + 
+                    "\nName: " + FirstName + 
+                    "\nBorn: " + Born.ToString("dd/MM/yyyy") + 
+                    "\nSalary: R$" + Salary + 
+                    "\nPosition:" + Position.ToString();
         }
     }
 }

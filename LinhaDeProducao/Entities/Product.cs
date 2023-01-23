@@ -45,10 +45,10 @@ namespace LinhaDeProducao.Entities
         public override string ToString()
         {
             return "Id: " + Id + 
-                " | Name: " + Name + 
-                " | Amount " + Amount + 
-                " | Profit: " + Profit() + 
-                " | OutValue: R$" + OutValue + ".";
+                    "\nName: " + Name + 
+                    "\nAmount " + Amount + 
+                    "\nProfit: " + Profit() + 
+                    "\nOutValue: R$" + OutValue + ".";
         }
     }
 }

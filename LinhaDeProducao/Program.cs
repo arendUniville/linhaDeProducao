@@ -3,6 +3,7 @@ using System.Security.Cryptography;
 using LinhaDeProducao.Entities;
 using System.Globalization;
 using LinhaDeProducao.Entities.Enums;
+using System.Xml.Linq;
 
 namespace LinhaDeProducao
 {
@@ -18,6 +19,7 @@ namespace LinhaDeProducao
             bool userWantContinue = true;
             int userMenuChoice;
             
+            //Product
             int productId = 0;
             string productName;
             int productAmount = 0;
@@ -25,13 +27,28 @@ namespace LinhaDeProducao
             double outValue;
             string serialId;
 
+            //Employee
             int employeeId = 0;
             string employeeName;
             DateTime employeeBorn;
             double employeeSalary = 0.00;
 
+            //Production
+            int productionId = 0;
+            string productionName;
+            string productionEmployeeName = "";
+            int productionProductName;
+            DateTime productionInitDate;
+            DateTime productionPreviousDate;
+            DateTime productionRealDate;
+            int productionEmployee = 0;
+
+            double productionCost = 0.00;
+            double productionValue = 0.00;
+
             List<Product> products = new List<Product>();
             List<Employee> employees = new List<Employee>();
+            List<ProductionOrder> orders = new List<ProductionOrder>();
             
 
 
@@ -170,24 +187,119 @@ namespace LinhaDeProducao
                         break;
 
                     case 3:
-                        return;
+
+                        int quantityProductionOrderAdd = 0;
+
+                        Console.Write("How many employee do you want to add? Quantity: ");
+                        quantityProductionOrderAdd = int.Parse(Console.ReadLine());
+
+                        for(int i = 0; i < quantityProductionOrderAdd; i++)
+                        {
+
+                            Console.WriteLine("Id: ");
+                            productionId = int.Parse(Console.ReadLine());
+
+                            Console.WriteLine("Name:");
+                            productionName = Console.ReadLine();
+
+                            Console.WriteLine("Entry id product: ");
+                            productionProductName = int.Parse(Console.ReadLine());
+
+                            Console.WriteLine("InitialDate: ");
+                            productionInitDate = DateTime.Now;
+
+                            Console.WriteLine("PreviousDate: ");
+                            productionPreviousDate = DateTime.Parse(Console.ReadLine());
+
+                            Console.WriteLine("RealDate: ");
+                            productionRealDate = DateTime.Parse(Console.ReadLine());
+
+                            Console.WriteLine("Entry id employe responsible: ");
+                            productionEmployee = int.Parse(Console.ReadLine());
+
+                            foreach(Employee m in employees)
+                            {
+
+                                if(productionEmployee == m.Id)
+                                {
+
+                                    productionEmployeeName = m.FirstName.ToString();
+
+                                }
+                                else
+                                {
+
+                                    productionEmployeeName = "Employee not founded.";
+
+                                }
+
+                            }
+
+                            Console.WriteLine("Cost: ");
+                            productionCost = double.Parse(Console.ReadLine());  
+
+                            Console.WriteLine("Value: ");
+                            productionValue = double.Parse(Console.ReadLine()); 
+
+
+                            ProductionStatus productionStatus = ProductionStatus.Pendent;
+
+                            orders.Add(
+                                new ProductionOrder(productionId, 
+                                                    productionName, 
+                                                    productionProductName,
+                                                    productionInitDate,
+                                                    productionPreviousDate,
+                                                    productionRealDate,
+                                                    productionEmployee.ToString(),
+                                                    productionStatus,
+                                                    productionCost,
+                                                    productionValue
+                                                    ));
+
+                            Console.WriteLine($"Production order number {productionId} with employee {productionEmployeeName}");
+
+                        }
+
+                        Console.Write("\nClick enter to continue. ");
+                        Console.ReadLine();
+
+                        Console.Clear();
+
+                        break;
 
                     case 4:
-                        return;
+
+                        Console.Write("\nClick enter to continue. ");
+                        Console.ReadLine();
+
+                        Console.Clear();
+
+                        break;
 
                     case 5:
 
-                        return;
+                        Console.Write("\nClick enter to continue. ");
+                        Console.ReadLine();
+
+                        Console.Clear();
+
+                        break;
 
                     case 6:
 
-                        return;
+                        Console.Write("\nClick enter to continue. ");
+                        Console.ReadLine();
+
+                        Console.Clear();
+
+                        break;
 
                     case 7:
 
                         Console.Clear();
 
-                        Console.WriteLine("Produtos cadastrados:\n");
+                        Console.WriteLine("Products registered:\n");
 
                         foreach(Product p in products)
                         {
