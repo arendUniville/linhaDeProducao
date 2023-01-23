@@ -65,7 +65,7 @@ namespace LinhaDeProducao
                 Console.WriteLine("2. Registrar um funcionário.");
                 Console.WriteLine("3. Iniciar uma produção.");
                 Console.WriteLine("4. Excluir uma produção.");
-                Console.WriteLine("5. Mostrar faturamento.");
+                Console.WriteLine("5. Mostrar finanças.");
                 Console.WriteLine("6. Mostrar produção em andamento.");
                 Console.WriteLine("7. Mostrar produtos.");
                 Console.WriteLine("8. Mostrar funcionários.");
@@ -294,6 +294,40 @@ namespace LinhaDeProducao
 
                         case 5:
 
+                            Console.Clear();
+
+                            Console.WriteLine("Money information:\n");
+
+                            double totalValueFatured = 0.00;
+                            double totalValueProfited = 0.00;
+                            double totalValueCost = 0.00;
+                            double totalCostEmplyees = 0.00;
+
+                            foreach(ProductionOrder ord in orders)
+                            {
+
+                                totalValueFatured += ord.Value;
+                                totalValueProfited += ord.Profit();
+                                totalValueCost += ord.Cost;
+
+                            }
+
+                            foreach(Employee emp in employees)
+                            {
+
+                                totalCostEmplyees = emp.Salary;
+
+                            }
+
+                            totalValueCost += totalCostEmplyees;
+
+                            Console.WriteLine("Employee cost: R$" + totalCostEmplyees);
+                            Console.WriteLine("Total cost: R$" + totalValueCost.ToString("F2", CultureInfo.InvariantCulture));
+                            Console.WriteLine("-----------------");
+
+                            Console.WriteLine("Total fatured: R$" + totalValueFatured.ToString("F2", CultureInfo.InvariantCulture));
+                            Console.WriteLine("Total proft: R$" + totalValueProfited.ToString("F2", CultureInfo.InvariantCulture));
+
                             Console.Write("\nClick enter to continue. ");
                             Console.ReadLine();
 
@@ -303,10 +337,15 @@ namespace LinhaDeProducao
 
                         case 6:
 
-                            foreach(ProductionOrder prod in orders)
+                            Console.Clear();
+
+                            Console.WriteLine("Orders registered:\n");
+
+                            foreach (ProductionOrder prod in orders)
                             {
 
                                 Console.WriteLine(prod.ToString());
+                                Console.WriteLine("------------------------------------");
 
                             }
 
@@ -327,6 +366,8 @@ namespace LinhaDeProducao
                             {
 
                                 Console.WriteLine(p.ToString());
+                                Console.WriteLine("------------------------------------");
+
 
                             }
 
