@@ -172,12 +172,43 @@ namespace LinhaDeProducao
                             Console.Write("How many employee do you want to add? Quantity: ");
                             quantityEmployeeAdd = int.Parse(Console.ReadLine());
 
+
+                            int employeesAdded = 0;
+
                             for (int i = 0; i < quantityEmployeeAdd; i++)
                             {
 
+                                if(i > 0)
+                                {
+
+                                    int z = i - 1;
+
+                                    Console.Clear();
+
+                                    Console.Write("Employees added:\n");
+
+                                    for(; z < employeesAdded; z++)
+                                    {
+
+                                        Console.WriteLine("\n"+employees[z]+"\n");
+
+                                        if(employeesAdded > 1)
+                                        {
+
+                                            Console.WriteLine("\n-------------------");
+
+                                        }
+
+                                    }
+
+
+                                }
+
                                 employeeId += 1;
 
-                                Console.Write("Digite o nome do employee: ");
+                                Console.WriteLine("==========================\n");
+
+                                Console.Write("\nDigite o nome do employee: ");
                                 employeeName = Console.ReadLine();
 
                                 Console.Write("Insira a data de nascimento: ");
@@ -188,9 +219,33 @@ namespace LinhaDeProducao
 
                                 employees.Add(new Employee(employeeId, employeeName, employeeBorn, employeeSalary, EmployeePosition.Auxiliary));
 
-                                Console.Write("\nEmployee added!\n");
+                                employeesAdded += 1;
 
 
+                                if (employeesAdded == quantityEmployeeAdd)
+                                {
+
+                                    int z = i - 1;
+
+                                    Console.Clear();
+
+                                    Console.Write("Employees added:\n");
+
+                                    for (; z < employeesAdded; z++)
+                                    {
+
+                                        Console.WriteLine("\n" + employees[z] + "\n");
+
+                                        if (employeesAdded > 1)
+                                        {
+
+                                            Console.WriteLine("-------------------");
+
+                                        }
+
+                                    }
+
+                                }
 
                             }
 

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "fFu+59CpS3OHjE8UUgm/XiyvpEJdkwLVVAXSYHx0VU89Ylr8GlXQ0SVEluIqqtWSLMmVDV6riP8Kw9kVwv1liQ==",
+  "dgSpecHash": "fNj6g+gYNXJ6s5uwcKha8d6VDIL7jyFpeRiHsxkFYOPWsUA45At8A2jlfho5o0ujtiUMczzIAGYPajY1weToyg==",
   "success": true,
-  "projectFilePath": "C:\\repUniville\\linhaDeProducao\\LinhaDeProducao\\LinhaDeProducao.csproj",
+  "projectFilePath": "C:\\xampp\\htdocs\\c#\\linhaDeProducao\\LinhaDeProducao\\LinhaDeProducao.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }

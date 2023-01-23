@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\repUniville\\linhaDeProducao\\LinhaDeProducao\\LinhaDeProducao.csproj": {}
+    "C:\\xampp\\htdocs\\c#\\linhaDeProducao\\LinhaDeProducao\\LinhaDeProducao.csproj": {}
   },
   "projects": {
-    "C:\\repUniville\\linhaDeProducao\\LinhaDeProducao\\LinhaDeProducao.csproj": {
+    "C:\\xampp\\htdocs\\c#\\linhaDeProducao\\LinhaDeProducao\\LinhaDeProducao.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\repUniville\\linhaDeProducao\\LinhaDeProducao\\LinhaDeProducao.csproj",
+        "projectUniqueName": "C:\\xampp\\htdocs\\c#\\linhaDeProducao\\LinhaDeProducao\\LinhaDeProducao.csproj",
         "projectName": "LinhaDeProducao",
-        "projectPath": "C:\\repUniville\\linhaDeProducao\\LinhaDeProducao\\LinhaDeProducao.csproj",
-        "packagesPath": "C:\\Users\\i_are\\.nuget\\packages\\",
-        "outputPath": "C:\\repUniville\\linhaDeProducao\\LinhaDeProducao\\obj\\",
+        "projectPath": "C:\\xampp\\htdocs\\c#\\linhaDeProducao\\LinhaDeProducao\\LinhaDeProducao.csproj",
+        "packagesPath": "C:\\Users\\bi_ar\\.nuget\\packages\\",
+        "outputPath": "C:\\xampp\\htdocs\\c#\\linhaDeProducao\\LinhaDeProducao\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\i_are\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\bi_ar\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -60,7 +60,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.102\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.101\\RuntimeIdentifierGraph.json"
         }
       }
     }
