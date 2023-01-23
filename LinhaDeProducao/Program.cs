@@ -17,7 +17,9 @@ namespace LinhaDeProducao
             Console.WriteLine("Bem vindo ao sistema de linha de produção.");
 
             bool userWantContinue = true;
-            int userMenuChoice;
+            int userMenuChoice = 0;
+            bool isNumber;
+            bool isRestart = false;
             
             //Product
             int productId = 0;
@@ -71,301 +73,315 @@ namespace LinhaDeProducao
 
 
                 Console.Write("Escolha a opção desejada: ");
-                userMenuChoice = int.Parse(Console.ReadLine());
+                string userMenuChoiceString = Console.ReadLine();
 
+                isNumber = int.TryParse(userMenuChoiceString,out userMenuChoice);
 
-                switch (userMenuChoice)
+                if(isNumber)
                 {
 
-                    case 1:
+                    userMenuChoice = int.Parse(userMenuChoiceString);
 
-                        int quantityProductsAdd = 0;
+                }
+                else
+                {
 
-                        Console.Write("How many products do you want to add? Quantity: ");
-                        quantityProductsAdd = int.Parse(Console.ReadLine());
+                    isRestart = true;
 
-                        for(int i = 0;i < quantityProductsAdd; i++)
-                        {
+                    Console.Write("The value inserted is not a valid value. Restarting program in ");
 
-                            productId += 1;
+                    for (int i = 3; i > 0; i--)
+                    {
 
-                            Console.Write("Digite o nome do produto: ");
-                            productName = Console.ReadLine();
+                        Console.Write(i);
 
-                            Console.Write("Insira a quantidade em estoque: ");
-                            productAmount = int.Parse(Console.ReadLine());
+                        Thread.Sleep(350);
+                        Console.Write(".");
+                        Thread.Sleep(350);
+                        Console.Write(".");
+                        Thread.Sleep(300);
 
-                            Console.Write("Insira o valor de custo: R$");
-                            entryValue = double.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
+                    }
 
-                            Console.Write("Insira o valor de venda: R$");
-                            outValue = double.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
+                    Console.Clear();
 
-                            Console.Write("Digite o lote do produto: ");
-                            serialId = Console.ReadLine();
+                }
 
-                            products.Add(new Product(productId, productName, productAmount, entryValue, outValue, serialId));
-
-                            Console.Write("\nProduto adicionado!\n");
-
+                Thread.Sleep(350);
+                Console.Clear();
 
 
-                        }
+                if (!isRestart)
+                {
 
-                        Console.Write("\nClick enter to continue. ");
-                        Console.ReadLine();
+                    switch (userMenuChoice)
+                    {
 
-                        Console.Write("Returnin to the main page in ");
+                        case 1:
 
-                        for (int i = 3; i > 0; i--)
-                        {
+                            Console.WriteLine("REGISTER PRODUCT\n");
 
-                            Console.Write(i);
+                            int quantityProductsAdd = 0;
 
-                            Thread.Sleep(350);
-                            Console.Write(".");
-                            Thread.Sleep(350);
-                            Console.Write(".");
-                            Thread.Sleep(300);
+                            Console.Write("How many products do you want to add? Quantity: ");
+                            quantityProductsAdd = int.Parse(Console.ReadLine());
 
-                        }
-
-                        Console.Clear();
-
-                        break;
-
-                    case 2:
-
-                        int quantityEmployeeAdd = 0;
-
-                        Console.Write("How many employee do you want to add? Quantity: ");
-                        quantityEmployeeAdd = int.Parse(Console.ReadLine());
-
-                        for (int i = 0; i < quantityEmployeeAdd; i++)
-                        {
-
-                            employeeId += 1;
-
-                            Console.Write("Digite o nome do employee: ");
-                            employeeName = Console.ReadLine();
-
-                            Console.Write("Insira a data de nascimento: ");
-                            employeeBorn = DateTime.Parse(Console.ReadLine());
-
-                            Console.Write("Entry salary employee: R$ ");
-                            employeeSalary = double.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
-
-                            employees.Add(new Employee(employeeId, employeeName, employeeBorn, employeeSalary, EmployeePosition.Auxiliary));
-
-                            Console.Write("\nEmployee added!\n");
-
-
-
-                        }
-
-                        Console.Write("\nClick enter to continue. ");
-                        Console.ReadLine();
-
-                        Console.Write("Returnin to the main page in ");
-
-                        for (int i = 3; i > 0; i--)
-                        {
-
-                            Console.Write(i);
-
-                            Thread.Sleep(350);
-                            Console.Write(".");
-                            Thread.Sleep(350);
-                            Console.Write(".");
-                            Thread.Sleep(300);
-
-                        }
-
-                        Console.Clear();
-
-
-                        break;
-
-                    case 3:
-
-                        int quantityProductionOrderAdd = 0;
-
-                        Console.Write("How many employee do you want to add? Quantity: ");
-                        quantityProductionOrderAdd = int.Parse(Console.ReadLine());
-
-                        for(int i = 0; i < quantityProductionOrderAdd; i++)
-                        {
-
-                            Console.WriteLine("Id: ");
-                            productionId = int.Parse(Console.ReadLine());
-
-                            Console.WriteLine("Name:");
-                            productionName = Console.ReadLine();
-
-                            Console.WriteLine("Entry id product: ");
-                            productionProductName = int.Parse(Console.ReadLine());
-
-                            Console.WriteLine("InitialDate: ");
-                            productionInitDate = DateTime.Now;
-
-                            Console.WriteLine("PreviousDate: ");
-                            productionPreviousDate = DateTime.Parse(Console.ReadLine());
-
-                            Console.WriteLine("RealDate: ");
-                            productionRealDate = DateTime.Parse(Console.ReadLine());
-
-                            Console.WriteLine("Entry id employe responsible: ");
-                            productionEmployee = int.Parse(Console.ReadLine());
-
-                            foreach(Employee m in employees)
+                            for (int i = 0; i < quantityProductsAdd; i++)
                             {
 
-                                if(productionEmployee == m.Id)
-                                {
+                                productId += 1;
 
-                                    productionEmployeeName = m.FirstName.ToString();
+                                Console.Write("Digite o nome do produto: ");
+                                productName = Console.ReadLine();
 
-                                }
-                                else
-                                {
+                                Console.Write("Insira a quantidade em estoque: ");
+                                productAmount = int.Parse(Console.ReadLine());
 
-                                    productionEmployeeName = "Employee not founded.";
+                                Console.Write("Insira o valor de custo: R$");
+                                entryValue = double.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
 
-                                }
+                                Console.Write("Insira o valor de venda: R$");
+                                outValue = double.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
+
+                                Console.Write("Digite o lote do produto: ");
+                                serialId = Console.ReadLine();
+
+                                products.Add(new Product(productId, productName, productAmount, entryValue, outValue, serialId));
+
+                                Console.Write("\nProduto adicionado!\n");
+
+
 
                             }
 
-                            Console.WriteLine("Cost: ");
-                            productionCost = double.Parse(Console.ReadLine());  
+                            Console.Write("\nClick enter to continue. ");
+                            Console.ReadLine();
 
-                            Console.WriteLine("Value: ");
-                            productionValue = double.Parse(Console.ReadLine()); 
+                            Console.Clear();
+
+                            break;
+
+                        case 2:
+
+                            Console.WriteLine("REGISTER EMPLOYEE\n");
+
+                            int quantityEmployeeAdd = 0;
+
+                            Console.Write("How many employee do you want to add? Quantity: ");
+                            quantityEmployeeAdd = int.Parse(Console.ReadLine());
+
+                            for (int i = 0; i < quantityEmployeeAdd; i++)
+                            {
+
+                                employeeId += 1;
+
+                                Console.Write("Digite o nome do employee: ");
+                                employeeName = Console.ReadLine();
+
+                                Console.Write("Insira a data de nascimento: ");
+                                employeeBorn = DateTime.Parse(Console.ReadLine());
+
+                                Console.Write("Entry salary employee: R$ ");
+                                employeeSalary = double.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
+
+                                employees.Add(new Employee(employeeId, employeeName, employeeBorn, employeeSalary, EmployeePosition.Auxiliary));
+
+                                Console.Write("\nEmployee added!\n");
 
 
-                            ProductionStatus productionStatus = ProductionStatus.Pendent;
 
-                            orders.Add(
-                                new ProductionOrder(productionId, 
-                                                    productionName, 
-                                                    productionProductName,
-                                                    productionInitDate,
-                                                    productionPreviousDate,
-                                                    productionRealDate,
-                                                    productionEmployee.ToString(),
-                                                    productionStatus,
-                                                    productionCost,
-                                                    productionValue
-                                                    ));
+                            }
 
-                            Console.WriteLine($"Production order number {productionId} with employee {productionEmployeeName}");
+                            Console.Write("\nClick enter to continue. ");
+                            Console.ReadLine();
 
-                        }
+                            Console.Clear();
 
-                        Console.Write("\nClick enter to continue. ");
-                        Console.ReadLine();
 
-                        Console.Clear();
+                            break;
 
-                        break;
+                        case 3:
 
-                    case 4:
+                            Console.WriteLine("REGISTER ORDER\n");
 
-                        Console.Write("\nClick enter to continue. ");
-                        Console.ReadLine();
+                            int quantityProductionOrderAdd = 0;
 
-                        Console.Clear();
+                            Console.Write("How many orders do you want to add? Quantity: ");
+                            quantityProductionOrderAdd = int.Parse(Console.ReadLine());
 
-                        break;
+                            for (int i = 0; i < quantityProductionOrderAdd; i++)
+                            {
 
-                    case 5:
+                                productionId += 1;
 
-                        Console.Write("\nClick enter to continue. ");
-                        Console.ReadLine();
+                                Console.WriteLine("Entry name production:");
+                                productionName = Console.ReadLine();
 
-                        Console.Clear();
+                                Console.WriteLine("Entry id product: ");
+                                productionProductName = int.Parse(Console.ReadLine());
 
-                        break;
+                                productionInitDate = DateTime.Now;
 
-                    case 6:
+                                Console.WriteLine("Entry Previous Date: ");
+                                productionPreviousDate = DateTime.Parse(Console.ReadLine());
 
-                        Console.Write("\nClick enter to continue. ");
-                        Console.ReadLine();
+                                productionRealDate = productionPreviousDate;
 
-                        Console.Clear();
+                                Console.WriteLine("Entry id employe responsible: ");
+                                productionEmployee = int.Parse(Console.ReadLine());
 
-                        break;
+                                foreach (Employee m in employees)
+                                {
 
-                    case 7:
+                                    if (productionEmployee == m.Id)
+                                    {
 
-                        Console.Clear();
+                                        productionEmployeeName = m.FirstName.ToString();
 
-                        Console.WriteLine("Products registered:\n");
+                                    }
+                                    else
+                                    {
 
-                        foreach(Product p in products)
-                        {
+                                        productionEmployeeName = "Employee not founded.";
 
-                            Console.WriteLine(p.ToString());
+                                    }
 
-                        }
+                                }
 
-                        Console.Write("\nClick enter to continue. ");
-                        Console.ReadLine();
+                                Console.WriteLine("Cost: ");
+                                productionCost = double.Parse(Console.ReadLine());
 
-                        Console.Clear();
+                                Console.WriteLine("Value: ");
+                                productionValue = double.Parse(Console.ReadLine());
 
-                        break;
 
-                    case 8:
+                                ProductionStatus productionStatus = ProductionStatus.Pendent;
 
-                        Console.Clear();
+                                orders.Add(
+                                    new ProductionOrder(productionId,
+                                                        productionName,
+                                                        productionProductName,
+                                                        productionInitDate,
+                                                        productionPreviousDate,
+                                                        productionRealDate,
+                                                        productionEmployee.ToString(),
+                                                        productionStatus,
+                                                        productionCost,
+                                                        productionValue
+                                                        ));
 
-                        Console.WriteLine("Employees registered:\n");
+                                Console.WriteLine($"Production order number {productionId} with employee {productionEmployeeName}");
 
-                        foreach (Employee e in employees)
-                        {
+                            }
 
-                            Console.WriteLine(e.ToString() + "\n");
-                            Console.WriteLine("------------------------------------");
+                            Console.Write("\nClick enter to continue. ");
+                            Console.ReadLine();
 
-                        }
+                            Console.Clear();
 
-                        Console.Write("\nClick enter to continue. ");
-                        Console.ReadLine();
+                            break;
 
-                        Console.Clear();
+                        case 4:
 
-                        break;
+                            Console.Write("\nClick enter to continue. ");
+                            Console.ReadLine();
 
-                    case 9:
+                            Console.Clear();
 
-                        Console.Clear();
-                        Console.Write("the program has been closed.");
-                        return;
+                            break;
 
-                    default:
+                        case 5:
 
-                        Console.Clear();
-                        Console.Write("Incorrect value. Returnin to the main page in ");
+                            Console.Write("\nClick enter to continue. ");
+                            Console.ReadLine();
 
-                        for (int i = 3; i > 0; i--)
-                        {
+                            Console.Clear();
 
-                            Console.Write(i);
+                            break;
 
-                            Thread.Sleep(350);
-                            Console.Write(".");
-                            Thread.Sleep(350);
-                            Console.Write(".");
-                            Thread.Sleep(300);
+                        case 6:
 
-                        }
+                            Console.Write("\nClick enter to continue. ");
+                            Console.ReadLine();
 
-                        Console.Clear();
+                            Console.Clear();
 
-                        break;
+                            break;
 
+                        case 7:
+
+                            Console.Clear();
+
+                            Console.WriteLine("Products registered:\n");
+
+                            foreach (Product p in products)
+                            {
+
+                                Console.WriteLine(p.ToString());
+
+                            }
+
+                            Console.Write("\nClick enter to continue. ");
+                            Console.ReadLine();
+
+                            Console.Clear();
+
+                            break;
+
+                        case 8:
+
+                            Console.Clear();
+
+                            Console.WriteLine("Employees registered:\n");
+
+                            foreach (Employee e in employees)
+                            {
+
+                                Console.WriteLine(e.ToString() + "\n");
+                                Console.WriteLine("------------------------------------");
+
+                            }
+
+                            Console.Write("\nClick enter to continue. ");
+                            Console.ReadLine();
+
+                            Console.Clear();
+
+                            break;
+
+                        case 9:
+
+                            Console.Clear();
+                            Console.Write("the program has been closed.");
+                            return;
+
+                        default:
+
+                            Console.Clear();
+                            Console.Write("Incorrect value. Returnin to the main page in ");
+
+                            for (int i = 3; i > 0; i--)
+                            {
+
+                                Console.Write(i);
+
+                                Thread.Sleep(350);
+                                Console.Write(".");
+                                Thread.Sleep(350);
+                                Console.Write(".");
+                                Thread.Sleep(300);
+
+                            }
+
+                            Console.Clear();
+
+                            break;
+
+
+                    }
 
                 }
+
 
             }
 
