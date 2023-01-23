@@ -2,6 +2,7 @@
 using System.Security.Cryptography;
 using LinhaDeProducao.Entities;
 using System.Globalization;
+using LinhaDeProducao.Entities.Enums;
 
 namespace LinhaDeProducao
 {
@@ -24,7 +25,14 @@ namespace LinhaDeProducao
             double outValue;
             string serialId;
 
+            int employeeId = 0;
+            string employeeName;
+            DateTime employeeBorn;
+            double employeeSalary = 0.00;
+
             List<Product> products = new List<Product>();
+            List<Employee> employees = new List<Employee>();
+            
 
 
             while (userWantContinue)
@@ -54,8 +62,10 @@ namespace LinhaDeProducao
 
                     case 1:
 
+                        int quantityProductsAdd = 0;
+
                         Console.Write("How many products do you want to add? Quantity: ");
-                        int quantityProductsAdd = int.Parse(Console.ReadLine());
+                        quantityProductsAdd = int.Parse(Console.ReadLine());
 
                         for(int i = 0;i < quantityProductsAdd; i++)
                         {
@@ -77,7 +87,7 @@ namespace LinhaDeProducao
                             Console.Write("Digite o lote do produto: ");
                             serialId = Console.ReadLine();
 
-                            products.Add(new Product(productId, productName, productAmount, entryValue, outValue, "GBA001"));
+                            products.Add(new Product(productId, productName, productAmount, entryValue, outValue, serialId));
 
                             Console.Write("\nProduto adicionado!\n");
 
@@ -85,13 +95,21 @@ namespace LinhaDeProducao
 
                         }
 
-                        Console.Write("Voltando a página inicial em ");
+                        Console.Write("\nClick enter to continue. ");
+                        Console.ReadLine();
 
-                        for (int i = 1; i <= 3; i++)
+                        Console.Write("Returnin to the main page in ");
+
+                        for (int i = 3; i > 0; i--)
                         {
 
-                            Console.Write(i + ", ");
-                            Thread.Sleep(1000);
+                            Console.Write(i);
+
+                            Thread.Sleep(350);
+                            Console.Write(".");
+                            Thread.Sleep(350);
+                            Console.Write(".");
+                            Thread.Sleep(300);
 
                         }
 
@@ -100,7 +118,56 @@ namespace LinhaDeProducao
                         break;
 
                     case 2:
-                        return;
+
+                        int quantityEmployeeAdd = 0;
+
+                        Console.Write("How many employee do you want to add? Quantity: ");
+                        quantityEmployeeAdd = int.Parse(Console.ReadLine());
+
+                        for (int i = 0; i < quantityEmployeeAdd; i++)
+                        {
+
+                            employeeId += 1;
+
+                            Console.Write("Digite o nome do employee: ");
+                            employeeName = Console.ReadLine();
+
+                            Console.Write("Insira a data de nascimento: ");
+                            employeeBorn = DateTime.Parse(Console.ReadLine());
+
+                            Console.Write("Entry salary employee: R$ ");
+                            employeeSalary = double.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
+
+                            employees.Add(new Employee(employeeId, employeeName, employeeBorn, employeeSalary, EmployeePosition.Auxiliary));
+
+                            Console.Write("\nEmployee added!\n");
+
+
+
+                        }
+
+                        Console.Write("\nClick enter to continue. ");
+                        Console.ReadLine();
+
+                        Console.Write("Returnin to the main page in ");
+
+                        for (int i = 3; i > 0; i--)
+                        {
+
+                            Console.Write(i);
+
+                            Thread.Sleep(350);
+                            Console.Write(".");
+                            Thread.Sleep(350);
+                            Console.Write(".");
+                            Thread.Sleep(300);
+
+                        }
+
+                        Console.Clear();
+
+
+                        break;
 
                     case 3:
                         return;
@@ -129,7 +196,7 @@ namespace LinhaDeProducao
 
                         }
 
-                        Console.WriteLine("\nAperte enter para continuar. ");
+                        Console.Write("\nClick enter to continue. ");
                         Console.ReadLine();
 
                         Console.Clear();
@@ -138,24 +205,46 @@ namespace LinhaDeProducao
 
                     case 8:
 
+                        Console.Clear();
+
+                        Console.WriteLine("Employees registered:\n");
+
+                        foreach (Employee e in employees)
+                        {
+
+                            Console.WriteLine(e.ToString() + "\n");
+                            Console.WriteLine("------------------------------------");
+
+                        }
+
+                        Console.Write("\nClick enter to continue. ");
+                        Console.ReadLine();
+
+                        Console.Clear();
+
                         break;
 
                     case 9:
 
                         Console.Clear();
-                        Console.WriteLine("O programa foi encerrado.");
+                        Console.Write("the program has been closed.");
                         return;
 
                     default:
 
                         Console.Clear();
-                        Console.WriteLine("Valor incorreto. Voltando ao início.");
+                        Console.Write("Incorrect value. Returnin to the main page in ");
 
-                        for (int i = 0; i < 3; i++)
+                        for (int i = 3; i > 0; i--)
                         {
 
-                            Console.WriteLine(i + ", ");
-                            Thread.Sleep(1000);
+                            Console.Write(i);
+
+                            Thread.Sleep(350);
+                            Console.Write(".");
+                            Thread.Sleep(350);
+                            Console.Write(".");
+                            Thread.Sleep(300);
 
                         }
 
