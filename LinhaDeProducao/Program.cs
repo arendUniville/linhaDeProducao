@@ -14,7 +14,7 @@ namespace LinhaDeProducao
         static void Main(string[] args) 
         {
 
-            Console.WriteLine("Bem vindo ao sistema de linha de produção.");
+            Console.WriteLine("Bem vindo ao sistema de linha de produção.\n");
 
             bool userWantContinue = true;
             int userMenuChoice = 0;
@@ -57,7 +57,9 @@ namespace LinhaDeProducao
             while (userWantContinue)
             {
 
-                Console.WriteLine("\n-------------------------------------\n");
+                isRestart = false;
+
+                Console.WriteLine("-------------------------------------\n");
 
                 Console.WriteLine("1. Registrar um produto.");
                 Console.WriteLine("2. Registrar um funcionário.");
@@ -300,6 +302,13 @@ namespace LinhaDeProducao
                             break;
 
                         case 6:
+
+                            foreach(ProductionOrder prod in orders)
+                            {
+
+                                Console.WriteLine(prod.ToString());
+
+                            }
 
                             Console.Write("\nClick enter to continue. ");
                             Console.ReadLine();

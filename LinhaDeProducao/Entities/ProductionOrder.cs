@@ -16,7 +16,7 @@ namespace LinhaDeProducao.Entities
         public DateTime InitialDate { get; set; }
         public DateTime PreviousDate { get; set; }
         public DateTime RealDate { get; set; }
-        public string Employess { get; set; }
+        public string Employee { get; set; }
         public ProductionStatus Status { get; set; }
         public double Cost { get; set; }
         public double Value { get; set; }
@@ -29,7 +29,7 @@ namespace LinhaDeProducao.Entities
             DateTime initialDate, 
             DateTime previousDate, 
             DateTime realDate, 
-            string employess, 
+            string employee, 
             ProductionStatus status, 
             double cost, 
             double value
@@ -41,7 +41,7 @@ namespace LinhaDeProducao.Entities
             InitialDate = initialDate;
             PreviousDate = previousDate;
             RealDate = realDate;
-            Employess = employess;
+            Employee = employee;
             Status = status;
             Cost = cost;
             Value = value;
@@ -51,6 +51,23 @@ namespace LinhaDeProducao.Entities
         {
 
             return Value - Cost;
+
+        }
+
+
+        public override string ToString()
+        {
+            return "Id: " + Id + 
+                    "\nName: " + Name +
+                    "\nProduct: " + Product +
+                    "\nInitial Date: " + InitialDate +
+                    "\nPrevious Date: " + PreviousDate +
+                    "\nReal Date: " + RealDate +
+                    "\nEmploye: " + Employee +
+                    "\nStatus: " + Status +
+                    "\nCost: R$" + Cost +
+                    "\nValue: R$" + Value + 
+                    "\nProfit: R$" + Profit().ToString();
 
         }
     }
