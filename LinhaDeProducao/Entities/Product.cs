@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Globalization;
 
 namespace LinhaDeProducao.Entities
@@ -38,7 +34,14 @@ namespace LinhaDeProducao.Entities
 
             double profit = OutValue - EntryValue;
 
-            return "Profit: " + profit.ToString("F2", CultureInfo.InvariantCulture);
+            return profit.ToString("F2", CultureInfo.InvariantCulture);
+
+        }
+
+        public double StockValue()
+        {
+
+            return OutValue * Amount;
 
         }
 
@@ -47,8 +50,10 @@ namespace LinhaDeProducao.Entities
             return "Id: " + Id + 
                     "\nName: " + Name + 
                     "\nAmount " + Amount + 
-                    "\nProfit: " + Profit() + 
-                    "\nOutValue: R$" + OutValue + ".";
+                    "\nProfit: R$" + Profit() + 
+                    "\nOutValue: R$" + OutValue.ToString("F2", CultureInfo.InvariantCulture) +
+                    "\n---------------------------" +
+                    "\nStock Product Value: R$" + StockValue().ToString("F2", CultureInfo.InvariantCulture) + ".";
         }
     }
 }

@@ -259,7 +259,7 @@ namespace LinhaDeProducao
 
                         case 3:
 
-                            Console.WriteLine("REGISTER ORDER\n");
+                            Console.WriteLine("NEW ORDER\n");
 
                             int quantityProductionOrderAdd = 0;
 
@@ -434,14 +434,22 @@ namespace LinhaDeProducao
 
                             Console.WriteLine("Products registered:\n");
 
+                            double stockValue = 0.00;
+                            double stockProductValue = 0.00;
+
                             foreach (Product p in products)
                             {
 
                                 Console.WriteLine(p.ToString());
                                 Console.WriteLine("------------------------------------");
 
+                                stockValue += p.StockValue();
 
                             }
+
+                            Console.WriteLine("------------------------------------");
+                            Console.WriteLine("Stock Value: R$"+stockValue.ToString("F2", CultureInfo.InvariantCulture));
+                            Console.WriteLine("------------------------------------");
 
                             Console.Write("\nClick enter to continue. ");
                             Console.ReadLine();

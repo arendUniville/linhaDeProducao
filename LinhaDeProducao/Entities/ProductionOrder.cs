@@ -1,9 +1,5 @@
 ﻿using LinhaDeProducao.Entities.Enums;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Globalization;
 
 namespace LinhaDeProducao.Entities
 {
@@ -65,9 +61,9 @@ namespace LinhaDeProducao.Entities
                     "\nReal Date: " + RealDate +
                     "\nEmploye: " + Employee +
                     "\nStatus: " + Status +
-                    "\nCost: R$" + Cost +
-                    "\nValue: R$" + Value + 
-                    "\nProfit: R$" + Profit().ToString();
+                    "\nCost: R$" + Cost.ToString("F2", CultureInfo.InvariantCulture) +
+                    "\nValue: R$" + Value.ToString("F2", CultureInfo.InvariantCulture) + 
+                    "\nProfit: R$" + Profit().ToString("F2", CultureInfo.InvariantCulture);
 
         }
     }
