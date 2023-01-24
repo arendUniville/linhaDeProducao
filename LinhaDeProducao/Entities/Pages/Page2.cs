@@ -40,8 +40,6 @@ namespace LinhaDeProducao.Entities.Pages
 
                 userMenuChoice = int.Parse(userMenuChoiceString);
 
-                Console.WriteLine(userMenuChoice);
-
                 Thread.Sleep(350);
                 Console.Clear();
 

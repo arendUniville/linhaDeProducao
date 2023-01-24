@@ -74,7 +74,7 @@ namespace LinhaDeProducao
                 Console.WriteLine("9. Sair do programa.");
 
                 Console.WriteLine("-------------------------------------");
-                Console.WriteLine("10. Próxima página.");
+                Console.WriteLine("0. Próxima página.");
                 Console.WriteLine("-------------------------------------");
 
                 Console.WriteLine("\n-------------------------------------");
@@ -130,7 +130,6 @@ namespace LinhaDeProducao
 
                         userMenuChoice = page2.Question();
 
-                        Console.WriteLine("Fora: "+userMenuChoice);
                     }
 
                     switch (userMenuChoice)
