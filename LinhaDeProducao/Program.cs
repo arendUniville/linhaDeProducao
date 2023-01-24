@@ -3,6 +3,7 @@ using System.Security.Cryptography;
 using LinhaDeProducao.Entities;
 using System.Globalization;
 using LinhaDeProducao.Entities.Enums;
+using LinhaDeProducao.Entities.Pages;
 using System.Xml.Linq;
 
 namespace LinhaDeProducao
@@ -17,7 +18,7 @@ namespace LinhaDeProducao
             Console.WriteLine("Bem vindo ao sistema de linha de produção.\n");
 
             bool userWantContinue = true;
-            int userMenuChoice = 0;
+            
             bool isNumber;
             bool isRestart = false;
             
@@ -58,6 +59,7 @@ namespace LinhaDeProducao
             {
 
                 isRestart = false;
+                int userMenuChoice;
 
                 Console.WriteLine("-------------------------------------\n");
 
@@ -71,15 +73,20 @@ namespace LinhaDeProducao
                 Console.WriteLine("8. Mostrar funcionários.");
                 Console.WriteLine("9. Sair do programa.");
 
+                Console.WriteLine("-------------------------------------");
+                Console.WriteLine("10. Próxima página.");
+                Console.WriteLine("-------------------------------------");
+
                 Console.WriteLine("\n-------------------------------------");
+
 
 
                 Console.Write("Escolha a opção desejada: ");
                 string userMenuChoiceString = Console.ReadLine();
 
-                isNumber = int.TryParse(userMenuChoiceString,out userMenuChoice);
+                isNumber = int.TryParse(userMenuChoiceString, out userMenuChoice);
 
-                if(isNumber)
+                if (isNumber)
                 {
 
                     userMenuChoice = int.Parse(userMenuChoiceString);
@@ -115,6 +122,16 @@ namespace LinhaDeProducao
 
                 if (!isRestart)
                 {
+
+                    if(userMenuChoice == 0)
+                    {
+
+                        Page2 page2 = new Page2();
+
+                        userMenuChoice = page2.Question();
+
+                        Console.WriteLine("Fora: "+userMenuChoice);
+                    }
 
                     switch (userMenuChoice)
                     {
@@ -253,7 +270,6 @@ namespace LinhaDeProducao
                             Console.ReadLine();
 
                             Console.Clear();
-
 
                             break;
 
@@ -484,6 +500,24 @@ namespace LinhaDeProducao
                             Console.Clear();
                             Console.Write("the program has been closed.");
                             return;
+
+                            
+                        case 10:
+
+                            return;
+
+                        case 11:
+
+                            Console.Write("Entry order Id to change status.");
+                            Console.ReadLine();
+
+
+                            Console.Write("\nClick enter to continue. ");
+                            Console.ReadLine();
+
+                            Console.Clear();
+
+                            break;
 
                         default:
 
